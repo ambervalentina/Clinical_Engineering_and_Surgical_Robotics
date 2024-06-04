@@ -6,8 +6,8 @@ Group technical assignment of year2 I-Explore Module (SURG60001_Clinical Enginee
 
 This assignment will explore the use of a surgical robot holding a spectroscopic sensing probe (a Raman spectroscopy probe) to characterise the surface of tissue. This will build on the work undertaken in the classwork activities.
 The assignment is split into two parts:
-- Part 1 explores the use of computer vision to estimate the 3D location of the spectral sensing probe and a target region of tissue. https://github.com/ambervalentina/Clinical_Engineering_and_Surgical_Robotics/blob/main/technical%20assignment/Raman_spectroscopy.html
-- Part 2 explores the use of Raman spectroscopy data to identify regions of tissue (or other samples) as cancerous or healthy.
+- Part 1 explores the use of computer vision to estimate the 3D location of the spectral sensing probe and a target region of tissue. https://github.com/ambervalentina/Clinical_Engineering_and_Surgical_Robotics/blob/7807451d8d69246c58dee1172067743faece638f/technical%20assignment/computer_vision.html
+- Part 2 explores the use of Raman spectroscopy data to identify regions of tissue (or other samples) as cancerous or healthy. https://github.com/ambervalentina/Clinical_Engineering_and_Surgical_Robotics/blob/main/technical%20assignment/Raman_spectroscopy.html
 
 
 ## Licensing
