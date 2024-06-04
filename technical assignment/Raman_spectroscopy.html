@@ -1,0 +1,866 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Technical Assignment Part 2</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5cb354b4-ca83-4175-ad30-0307107fef45" class="page serif"><header><h1 class="page-title">Technical Assignment Part 2</h1><p class="page-description"></p></header><div class="page-body"><div id="5efb7f85-0856-42c9-9c3b-82330d4d6c16" class="column-list"><div id="d93bf12b-3224-403c-8c95-7dbd0adc112c" style="width:25%" class="column"><h2 id="1386799c-868c-44e3-b1f4-e252dcb0323d" class="">ZUYUE JIANG</h2></div><div id="28aab79f-8404-4e3c-b439-27eea11cf77a" style="width:25%" class="column"><h2 id="f16e066c-370a-41bb-9b5c-543e82576581" class="">XICONG CHEN</h2></div><div id="6048f67f-81a6-4045-a52a-70ffb6ae6a9d" style="width:25%" class="column"><h2 id="8c471705-adf0-4077-9315-3deba93f00a6" class="">KERONG PANG</h2></div><div id="875609f5-1f0e-4353-97da-58ad07c663d1" style="width:25%" class="column"><h2 id="e6871215-0803-4e0b-9b45-2dc485329f7d" class="">HARI PRABHU</h2></div></div><p id="6f59d1aa-119d-4f29-bba4-88296c2623b6" class=""><strong>STATISTICAL ANALYSIS AND MACHINE LEARNING CLASSIFICATION OF RAMAN SPECTROSCOPY SIGNALS</strong></p><p id="bbeb251a-3d5b-47d7-9a0f-24f441d65af0" class="">In Part 2 of the Technical Assignment, we will analyse the Raman spectroscopy signals obtained from two different types of tissue (Cancer and Healthy). The aim of this part of the assignment is to classify the datasets as Healthy or Cancer based on some intrinsic spectral parameters, thereby demonstrating the diagnostic potential of the data.</p><h1 id="b5cda7ab-41cb-457d-87a9-45ac9e196aae" class="">EXERCISE 0: INITIALIZATION</h1><p id="03daa1d0-305e-4762-9b80-f2efed71d408" class="">In this first exercise we will load and visualise the files that contain the Raman spectroscopy signals.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="96a37654-f8e1-4ecb-b962-1884ca98f145" class="code"><code class="language-MATLAB">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                             %%%%%%%%%
+%%%%%          LOAD DATA FILES            %%%%%
+%%%%%%%%%                             %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+addpath(&#x27;.../Technical assignment/Part 2 - Raman Spectroscopy/Data and MATLAB code&#x27;)
+
+% Cancer tissue
+foldername = sprintf(&#x27;AT1_data_norm.txt&#x27;);
+fileread(foldername);
+Cancer = str2num(ans);
+clear ans foldername
+
+% Healthy tissue
+foldername = sprintf(&#x27;Fibro_data_norm.txt&#x27;);
+fileread(foldername);
+Healthy = str2num(ans);
+clear ans foldername
+
+% Raman shift (cm-1)
+foldername = sprintf(&#x27;Raman_shift.txt&#x27;);
+fileread(foldername);
+Raman_shift = str2num(ans);
+clear ans foldername</code></pre><div id="1c88c923-670d-4b7c-a154-bdedc965509a" class="column-list"><div id="18136c31-1a16-4470-99f2-c96cdabb9a99" style="width:62.5%" class="column"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="15973cf1-efb8-4df4-9eae-c9dfeb0a0e43" class="code"><code class="language-MATLAB">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Pre-visualization of the data %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+figure;
+% Data 1:4T1 and Data 2: Fibroblast
+plot(Raman_shift,Cancer)
+hold on; plot(Raman_shift,Healthy)
+xlabel(&#x27;Wavelength (nm)&#x27;)
+title(&#x27;Cancer and Healthy Raman spectra&#x27;)</code></pre></div><div id="af943a00-3f1e-49af-a182-3a139f1f9216" style="width:37.5%" class="column"><figure id="e4d6b6e7-4c8a-4b68-813a-c4e127984f0c" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled.png"><img style="width:1038px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled.png"/></a></figure></div></div><h1 id="4c077044-9220-497f-9f1d-91e1ac59a4be" class="">EXERCISE 1: AVERAGE AND STANDARD DEVIATION CURVES</h1><p id="7454f9bc-f0ec-468b-8e55-6d79452352ca" class="">In Exercise 1, we will calculate and visualise the average and standard deviation curves of the Raman signals for both types of tissues (cancer and healthy).</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ccd475c0-8642-45c5-b015-8ec5e9dfb05c" class="code"><code class="language-MATLAB">% 1.1. Calculate the average graphs for cancer and healthy tissue.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Average graphs &amp; STD %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Cancer_avg = mean(Cancer,2)&#x27;;
+Cancer_std = std(Cancer,0,2)&#x27;;
+Healthy_avg = mean(Healthy,2)&#x27;;
+Healthy_std = std(Healthy,0,2)&#x27;;
+
+% Plot the average graphs
+figure;
+stdshade([Healthy_avg; Healthy_std],0.15,&#x27;b&#x27;, Raman_shift,0.15)
+hold on;
+stdshade_dotted([Cancer_avg; Cancer_std],0.15,&#x27;r&#x27;, Raman_shift,0.15)
+ylabel(&#x27;Raman spectra for Healthy and Cancerous tissue&#x27;)
+xlabel(&#x27;Raman shift (cm-1)&#x27;)
+legend(&#x27;STD Healthy&#x27;,&#x27;Mean Healthy&#x27;,  &#x27;STD Cancer&#x27;,&#x27;Mean Cancer&#x27;)</code></pre><h2 id="b7829b5c-1093-497b-a44d-59a752044340" class="">QUESTION:</h2><h3 id="9ede201e-d3dc-407f-aded-46b1e4d387a4" class="">1.1 Present screenshots of the average graphs for the Cancer and Healthy variables.</h3><div id="95c1a98c-bae7-4554-9ae4-220a5eb775c4" class="column-list"><div id="608a726c-5cf4-4790-b481-518b9eaba460" style="width:56.25%" class="column"><figure id="0472ce10-383d-41f7-a432-182e398a93a3" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%201.png"><img style="width:1040px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%201.png"/></a></figure></div><div id="0a99c7f4-0784-4818-8edc-f6d3e6927eac" style="width:43.75%" class="column"><p id="41d3bad7-c8a8-4ff8-ba87-2b96a6c8fdec" class="">
+</p></div></div><h1 id="e016e9ef-1784-40a6-8a57-74f5601f8e7f" class="">EXERCISE 2: MANUAL ANALYSIS OF RAMAN SPECTROSCOPY SIGNALS</h1><p id="7a8fcf6a-d9ba-4f1d-b441-fced227078bf" class="">In this exercise we will MANUALLY analyse the Raman signals. As described in the introduction, we want to extract features from the signals (from both cohorts) in order to perform a Statistical Analysis (and future Classification) of the signals.Different tissues have different Raman signals, which are characterised by spectral peaks at particular x-values (Raman shifts) with particular intensities.</p><h2 id="12206060-189f-42a5-ae1b-1eced8b57f83" class="">QUESTIONS:</h2><h3 id="264048dc-56c6-4c39-9a4c-003b90b979f9" class="">2.1 Report the Raman shifts (x-values) for the 4 spectral peaks that you selected above.</h3><div id="70e95596-1da3-40ae-b526-27f0cdb222a9" class="column-list"><div id="648d2592-e9fe-4647-b1dd-094fe0951135" style="width:62.5%" class="column"><figure id="65bbb18f-14f9-4afd-88ae-ffa66870f3d6" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%202.png"><img style="width:2486px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%202.png"/></a></figure></div><div id="95ebf38a-bc02-4fe4-90b4-afbec6e5638d" style="width:37.49999999999999%" class="column"><p id="8e6bb358-cf02-4d14-9ca1-c4fc9a2bc18b" class="">
+</p></div></div><p id="92a92c07-617b-4323-ae24-590aa37ff47a" class="">Here we manually select 4 Key peaks from the average signals that show differences between both tissues. In order to do that, we use the graph created before and analyse the average signals. Find x-values where both signals (at that particular x-value) have different intensity values. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16dd23cf-e270-4590-96c5-c1ebd1b01846" class="code"><code class="language-MATLAB">% 2.1. Select and Plot 4 key peaks from both average datasets:
+
+% Select the x-values:
+X1 = 277.844;
+X2 = 580.614;
+X3 = 1068.52;
+X4 = 1396.36;
+
+% Find the position of each point in the Raman shift array:
+P1 = find(Raman_shift&gt;X1-1 &amp; Raman_shift&lt;X1+1);
+P2 = find(Raman_shift&gt;X2-1 &amp; Raman_shift&lt;X2+1);
+P3 = find(Raman_shift&gt;X3-1 &amp; Raman_shift&lt;X3+1);
+P4 = find(Raman_shift&gt;X4-1 &amp; Raman_shift&lt;X4+1);</code></pre><h3 id="2a344553-2184-427d-afa9-2923f785df40" class="">2.2 Report the Cancer:Healthy ratios of the intensity values observed at these peaks (i.e. parameters ‘ratio_P1’, ‘ratio_P2’, ‘ratio_P3’, and ‘ratio_P4’).</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f7e8467d-7557-4012-b3fc-2a925adfd3ef" class="code"><code class="language-MATLAB">% Find the intensity (amplitude) for each tissue
+Cancer_P1 = Cancer_avg(1,P1);
+Cancer_P2 = Cancer_avg(1,P2);
+Cancer_P3 = Cancer_avg(1,P3);
+Cancer_P4 = Cancer_avg(1,P4);
+
+Healthy_P1 = Healthy_avg(1,P1);
+Healthy_P2 = Healthy_avg(1,P2);
+Healthy_P3 = Healthy_avg(1,P3);
+Healthy_P4 = Healthy_avg(1,P4);
+
+ratio_P1 = Cancer_P1 / Healthy_P1; % 6.2463
+ratio_P2 = Cancer_P1 / Healthy_P2; % 6.1409
+ratio_P3 = Cancer_P1 / Healthy_P3; % 9.1210
+ratio_P4 = Cancer_P1 / Healthy_P4; % 7.9709</code></pre><div id="b3a8d153-c764-4180-b1c6-d58dcbf2b748" class="column-list"><div id="903f6083-3643-4021-bb1a-ba365bd15ae4" style="width:50%" class="column"><table id="87b14976-1afc-41fb-b586-4bdd8cb073d8" class="simple-table"><tbody><tr id="15b25ce4-4aca-45d6-a2aa-5c05165dcad2"><td id="dTrD" class="">ratio_P1</td><td id="YCaL" class="">6.2463</td></tr><tr id="5f9fa88f-e15b-423b-b36e-06383913d98b"><td id="dTrD" class="">ratio_P2</td><td id="YCaL" class="">6.1409</td></tr><tr id="03e097d0-21a5-4034-bc85-fe302dbcd5d4"><td id="dTrD" class="">ratio_P3</td><td id="YCaL" class="">9.1210</td></tr><tr id="2f355da9-5de3-4435-9b5e-0f76aefb21c2"><td id="dTrD" class="">ratio_P4</td><td id="YCaL" class="">7.9709</td></tr></tbody></table></div><div id="65885bc5-3e92-4cd7-9814-274fba0ca5d3" style="width:50%" class="column"><figure id="b11888f4-9061-4578-a037-f0f7acb7fa04" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%203.png"><img style="width:404px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%203.png"/></a></figure></div></div><h3 id="54683a2f-d008-40a2-ab37-20a23f4dfdf8" class="">2.3 Which spectral peak exhibited the highest Cancer:Healthy ratio?</h3><p id="aea49da1-be86-4e4b-9488-7432a34321b5" class=""><strong>ANS</strong>: P1 (by graph)</p><p id="d573328d-dad0-4a9c-9d14-30eff5890fbb" class="">We plot the intensities for each peak as well as the Cancer:<code>Healthy ratios</code>.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e39aa144-3f77-4d52-9d18-c8269b7b7ca8" class="code"><code class="language-MATLAB">% Plot the results:
+figure;
+subplot(1,2,1)
+labelX = categorical({&#x27;P1&#x27;,&#x27;P2&#x27;,&#x27;P3&#x27;, &#x27;P4&#x27;});
+bar(labelX,[Cancer_P1,Healthy_P1;Cancer_P2,Healthy_P2;Cancer_P3,Healthy_P3;Cancer_P4,Healthy_P4],&#x27;grouped&#x27;)
+legend(&#x27;Cancer&#x27;,&#x27;Healthy&#x27;)
+title(&#x27;Peak value&#x27;)
+
+subplot(1,2,2)
+labelX = categorical({&#x27;P1&#x27;,&#x27;P2&#x27;,&#x27;P3&#x27;, &#x27;P4&#x27;});
+bar(labelX,[ratio_P1,ratio_P2,ratio_P3,ratio_P4])
+title(&#x27;Ratio&#x27;)
+clear labelX</code></pre><div id="da38bdfd-7b63-41f0-8b82-e7fac600b57a" class="column-list"><div id="1f217e28-630a-4ef8-8699-98549bf65329" style="width:50%" class="column"><figure id="fb46860f-15ea-4f8b-a252-20e8950ede57" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%204.png"><img style="width:1020px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%204.png"/></a></figure></div><div id="78f057aa-9e8e-4fed-b801-827930b260b5" style="width:50%" class="column"><p id="5eeec767-ce97-4bd2-b4a6-ea5aba518bdd" class="">
+</p></div></div><h1 id="4d62f3cd-1c0a-4868-9470-5de95ff865bf" class="">EXERCISE 3: PRINCIPAL COMPONENT ANALYSIS</h1><p id="90e4a681-501c-46a1-a299-6f3663e37098" class="">While the simple ratio approach above can provide good differentiation between  cancerous and healthy datasets, this is not always the case. In situations where  simple intensity- or ratio-based approaches are not suitable, we can use more  complex spectral analysis to ascertain whether the data can be used to identify  cancerous from healthy tissue.</p><p id="eac8123c-9ff8-4346-a662-984735356528" class="">In this exercise, we perform a Principal Component Analysis (PCA) of both datasets to identify significant differences between the two cohorts (Cancer and Healthy).</p><p id="e88c7e98-e3e6-4bdb-a6ad-c61579a9d689" class="">The results from the PCA will vary depending on the input data, in particular based on the range of Raman shifts investigated. Hence, you need to analyse the signals in  order to find the optimal range of Raman shifts (x-values) that gives the best PCA  separation of the datasets.</p><p id="a16c05bb-df62-49d0-8baa-e606c0a64446" class="">After performing PCA, we plot:</p><ol type="1" id="d6e5a52e-3e20-4bda-ad0c-a420be3ca733" class="numbered-list" start="1"><li>The eigenvalues vs. the Principal Component (PC) value</li></ol><ol type="1" id="a68dfca8-2365-44a7-8feb-80ecbe1f2f90" class="numbered-list" start="2"><li>Loading plot (Eigenvectors)</li></ol><ol type="1" id="6216fefa-72b3-4801-bbc7-65a22bb08499" class="numbered-list" start="3"><li>Scores plot (projection)</li></ol><ol type="1" id="09e4487b-4ffa-4045-bd03-0b02c8c4f7df" class="numbered-list" start="4"><li>PC1 vs. PC2</li></ol><p id="9a8c3c73-b95f-49b5-b582-5e06e2c61961" class="">We test the following:</p><ul id="54e83260-dee6-4084-bea5-9668eb19ef1d" class="bulleted-list"><li style="list-style-type:disc">The full x-value range</li></ul><ul id="1c886f34-f51e-494e-8cc1-1d1bb2a297dc" class="bulleted-list"><li style="list-style-type:disc">Ranges of 1:600, 1:800, 800:end</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="35a6e725-a6b9-49cf-90b7-8a08daa106b3" class="code"><code class="language-MATLAB">% 3.0. Perform a PRICIPAL COMPONENTS ANALYSIS
+
+% Fig1: range = 800:1557
+range = 800:1557;
+data = [Healthy(range,:),Cancer(range,:)]; 
+
+% Fig2: range = 1:1557
+range = 1:1557;
+data = [Healthy(range,:),Cancer(range,:)]; 
+
+% Fig3: range = 1:800
+range = 1:800;
+data = [Healthy(range,:),Cancer(range,:)]; 
+
+% Fig4: range = 1:600
+range = 1:600;
+data = [Healthy(range,:),Cancer(range,:)]; </code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e4a538-7de0-4b57-b041-8d445a41c8a3" class="code"><code class="language-MATLAB">% 3.1) standarize (data is already standarized)  
+    stand_data = data;
+
+% 3.2) Correlation matrix
+    corr_data = corrcoef(stand_data);
+    
+% 3.3) Eigenvalues  
+    [eigvec_data,eigval_data] = eig(corr_data);
+    
+% 3.4) Ranking the eigenvalues
+    % DATA
+    [~,pos]=max([diag(eigval_data)]);
+    [~,ind]=sort(diag(eigval_data),&#x27;descend&#x27;);
+    eigvec_data(:,:)=eigvec_data(:,ind);
+    values = eigval_data(:,ind);
+    eigval_data(:,:)= fliplr(values&#x27;);
+    clear pos ind values
+    
+% 3.5) Percentage of variance
+    percentage_var_data = diag(eigval_data)/sum(diag(eigval_data)).*100;
+
+% 3.6) Project data (Scores coefficients)
+    PCA_data = stand_data*eigvec_data;
+
+figure;</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="044e2b75-1f87-46cf-b1c4-9c9eb443c3b2" class="code"><code class="language-MATLAB">% Plot Eigvenvalues vs Principal component number (after being sorted)
+subplot(2,2,1)
+plot(diag(eigval_data),&#x27;-o&#x27;)
+xlabel(&#x27;Principal Component number&#x27;)
+ylabel(&#x27;Eigenvalue&#x27;)
+ylim([-5 (max(diag(eigval_data))+10)])
+
+% Plot the Eigenvectors (Loading plot)
+subplot(2,2,2)
+biplot(eigvec_data(:,1:2))
+title(&#x27;Loading plot&#x27;)
+xlabel(&#x27;PC1&#x27;)
+ylabel(&#x27;PC2&#x27;)
+
+% Plot Scores plot (porjection)
+subplot(2,2,3)
+scatter(PCA_data(:,1), PCA_data(:,2))
+title(&#x27;Scores plot&#x27;)
+xlabel(&#x27;PC1&#x27;)
+ylabel(&#x27;PC2&#x27;)
+
+% Plot PC1 vs PC2
+subplot(2,2,4)
+scatter(eigvec_data(1:18,1),eigvec_data(1:18,2),&#x27;k&#x27;) % Healthy
+hold on;
+scatter(eigvec_data(19:36,1),eigvec_data(19:36,2),&#x27;r&#x27;) % Cancer
+title(&#x27;PC 1 vs PC2&#x27;)
+xlabel(&#x27;PC1&#x27;)
+ylabel(&#x27;PC2&#x27;)
+legend(&#x27;Healthy&#x27;,&#x27;Cancer&#x27;)</code></pre><h2 id="916dc99b-04c4-4051-b310-e05d87db056c" class="">QUESTIONS:</h2><h3 id="0ad2a6cc-965d-419c-8679-a955159abf1e" class="">3.1 Present screenshots of the PC1 vs. PC2 graphs for four x-value ranges.</h3><div id="f286e781-039a-435f-8614-da50345beff3" class="column-list"><div id="5998ac45-fa14-430c-a40e-3175641880ba" style="width:50%" class="column"><figure id="09115968-42c9-4af1-8e20-0c73b1e6df9a" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%205.png"><img style="width:1084px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%205.png"/></a><figcaption>Fig1: 800:end (800:1557)</figcaption></figure></div><div id="d208a213-aa33-446b-ad9e-1503ffd4195c" style="width:50%" class="column"><figure id="477d30c7-9fbc-42e1-be65-6283992b1bc7" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%206.png"><img style="width:1084px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%206.png"/></a><figcaption>Fig2: 1:end (1:1557)</figcaption></figure></div></div><div id="0c9abd07-70c0-4b1e-81bb-4dfa644b3df0" class="column-list"><div id="ba09d5b9-249b-463a-b9fe-ecd7c7b69506" style="width:50%" class="column"><figure id="898ed079-d9c2-4ebe-8a9e-f7f19b177d1f" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%207.png"><img style="width:1068px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%207.png"/></a><figcaption>Fig3: 1:800</figcaption></figure></div><div id="bacd8856-d275-4ee3-b338-8d1e95242f9b" style="width:50%" class="column"><figure id="460ee2ca-b972-410b-846a-10f384638f5b" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%208.png"><img style="width:1088px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%208.png"/></a><figcaption>Fig4: 1:600</figcaption></figure></div></div><h3 id="8ede9904-4555-490b-9709-024e6a633778" class="">3.2 Visually inspect the PC1 vs. PC2 graphs for each x-value range that is tested.<br/>Which range provides the clearest separation between the Cancer and Healthy datapoints?<br/></h3><p id="9c230f34-a753-4c3b-8d45-2b65a4d452ce" class="">Fig4 is the best.</p><h3 id="977f2973-af62-4a43-b1ba-357d34a3274a" class="">3.3 Briefly explain why the above x-value range provides the best PCA separation.</h3><p id="034fdefa-53d4-42da-a693-88c3d29d0610" class="">The x-value range in Fig4 captures key spectral features that are significantly different between cancerous and healthy tissues. </p><h1 id="3fc2aeb9-086a-4616-afd7-aaca9b423492" class="">EXERCISE 4: MACHINE LEARNING CLASSIFIER</h1><p id="3b203a5d-1276-4036-ac47-9ef8b136b387" class="">In this Exercise, we will use the Machine Learning GUI functionality in MATLAB to implement machine learning classification. We will use the &quot;Classification Learner&quot; app in the MATLAB Statistics and Machine Learning toolbox in order to train a machine learning model and classify the data (i.e. as Cancer or Healthy) using supervised machine learning.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5e859e45-c2b0-4efc-b29e-dc9ea452335d" class="code"><code class="language-MATLAB">% Create the input data (using the following function):
+[Raman_data_training,Raman_data_test] = create_table_function(Healthy,Cancer,range);</code></pre><p id="2ac1f5cd-510c-499a-8a19-1e60b1ef3fb4" class="">
+</p><p id="fbc58af2-60c4-4777-aba6-98a0266ad9ed" class=""><strong>Confusion matrix:</strong> This is not a metric as such but rather the base for multiple metrics to evaluate classification algorithms. Confusion Matrices are simply mapping matrices that compare the outcome of your algorithm and the true label of a specific target. From them, we can obtain 4 basic values: <strong>True Positives (TP)</strong>, <strong>True Negatives (TN)</strong>, <strong>False Positives (FP)</strong> and <strong>False Negatives (FN)</strong>. The following Metrics are derived from the confusion matrix.</p><p id="f965eebd-3b61-443b-a142-926ecb4cd5a9" class=""><strong>Accuracy (Acc)</strong>: One of the most used metrics to evaluate a classification algorithm. It is calculated according to the following equation: </p><figure id="2ed2fdf6-7eee-4190-a19f-317636f032a5" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>A</mi><mi>c</mi><mi>c</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>T</mi><mi>N</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi><mo>+</mo><mi>T</mi><mi>N</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Acc = \frac{TP+TN}{TP+FP+TN+FN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">cc</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">FP</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">TN</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">FN</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">TN</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></figure><p id="6903ac27-ed68-4988-aef1-7c2cd12433ca" class="">The higher this value, the better your algorithm is when it comes to classifying samples. <strong>An accuracy of 100% means that your algorithm is perfect when separating the classes. Be careful though: if the data is not balanced (in terms of number of samples per class), the accuracy could be high at the training stage, but the model may not classify unseen (test) data correctly.</strong></p><p id="524fa537-6240-4ec6-9a6f-14795cdf511c" class=""><strong>Precision:</strong> This is a widely used metric to demonstrate how well the classification of the positive class (Cancer in this case) is performing. It indicates how many samples are correctly classified as positive.</p><figure id="df802ebc-178f-4048-9816-7e7579c0cc2e" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Precision = \frac{TP}{TP+FP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">rec</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">FP</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></figure><p id="71cec7f0-38aa-4e1a-9733-3c9508dad49e" class=""><strong>Sensitivity/Recall:</strong> This is similar to Precision. It is very useful when the target is a rare event (also called imbalanced). It gives us the percentage of samples classified by the algorithm as positive among all the real positive samples.</p><figure id="18493cb9-2b63-4bfb-bb02-6464c83a87d4" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Sensitivity = \frac{TP}{TP+FN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">FN</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></figure><p id="20522d5f-f40c-4bf4-80ab-564f8c2972a6" class=""><strong>Specificity</strong>: This variable provides the proportion of negatives that our algorithm is identifying correctly. This value is required to calculate the AUC (see below).</p><figure id="f417c275-ff96-4bb4-bbea-c35bc9e76c9d" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mi>p</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>f</mi><mi>i</mi><mi>c</mi><mi>i</mi><mi>t</mi><mi>y</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>N</mi></mrow><mrow><mi>T</mi><mi>N</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Specificity = \frac{TN}{TN+FP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Sp</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">i</span><span class="mord mathnormal">c</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">TN</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">FP</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">TN</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></figure><p id="5c544285-764d-4045-a0f8-627fca37ebf9" class=""><strong>F-score:</strong> This metric combines Precision and Sensitivity to provide an overarching assessment of the algorithm’s accuracy.</p><figure id="3a3a6d70-07b8-40e7-a2ba-cb2d7cb2199e" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mo>−</mo><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo>=</mo><mn>2</mn><mo>∗</mo><mfrac><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>∗</mo><mi>S</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi></mrow><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>+</mo><mi>S</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">F-score = 2* \frac{Precision*Sensitivity}{Precision+Sensitivity}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">score</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.2408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">rec</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">rec</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></figure><p id="5e3ce97a-8fde-48ae-9ce0-1f83d38b8ccb" class="">A high F-score means that our model is able to better separate both classes (which is the ultimate goal of this type of classification algorithm).</p><p id="07af3f50-ac37-4f1c-aa58-00a1b42490be" class=""><strong>AUC:</strong> This variable represents the area under the ROC curve (and is not derived from the confusion matrix). The ROC curve plots the value of Sensitivity against 1-Specificity for any threshold available in the classification algorithm (and can also be analysed in the Statistics and Machine Learning toolbox. AUC is then the area under the ROC curve. The higher the AUC, the better your model is separating the classes at any threshold. A value of 0 means that your model is worse than a random classification model and a value of 1 represents perfect classification (i.e. correct classification of all samples at all thresholds).</p><h2 id="651498bc-2de8-45f3-8174-eb1320b49246" class="">QUESTIONS:</h2><h3 id="efeaa266-f542-4fbe-b287-a54459028b63" class="">4.1 Which machine learning model provided the highest classification accuracy (Acc)?</h3><div id="345fe13a-087c-4152-a5ce-60b7e85098be" class="column-list"><div id="de2775d2-b2f2-4cb9-ad4f-870549a21757" style="width:25%" class="column"><p id="c0a2ff3d-edc8-454f-a9d1-56ba5e2e7580" class="">Model 2.9</p><p id="702d7f96-f4b8-40c1-a366-73d901b56bed" class="">(selected by the App)</p><p id="9e44b8a2-4c44-428f-90e1-119d0d1ed0ab" class="">(with regard to Acc)</p><p id="cd83821e-5514-4767-873c-1defc5e3bc84" class="">
+</p></div><div id="069cfa52-8cf9-4745-9b1f-ce8470fa926d" style="width:75%" class="column"><figure id="19968adc-ace2-4c1a-86dd-50249772313e" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%209.png"><img style="width:486px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%209.png"/></a></figure></div></div><div id="9952590b-360c-4cc0-a8b1-405224966572" class="column-list"><div id="9bc6f95b-c406-4cec-bd91-ceaa65e55b46" style="width:33.333333333333336%" class="column"><figure id="60e7c29f-a520-4332-b3af-57409d4a347f" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%2010.png"><img style="width:486px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%2010.png"/></a></figure></div><div id="74c513b6-2f74-4c66-9202-8d92351081c7" style="width:33.333333333333336%" class="column"><figure id="fd490f68-2c17-47dd-9ca2-8d20384e9775" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%2011.png"><img style="width:2880px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%2011.png"/></a></figure></div><div id="d9f20249-9aef-4d5c-9b88-c82794687ffd" style="width:33.33333333333333%" class="column"><figure id="a24f47c6-8525-420d-8c87-b50c5e2ebdb5" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%2012.png"><img style="width:331px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%2012.png"/></a></figure></div></div><h3 id="a69d079a-e28f-459b-9abc-d8fc89d3d776" class="">4.2 Based on the model with the highest accuracy (in the training/validation dataset), use the confusion matrix for the training dataset to calculate the metrics Accuracy, Precision, Sensitivity, Specificity and F-score.</h3><div id="c671b69b-be04-432d-9c27-46d72cbb3216" class="column-list"><div id="2eb64cc2-e0af-4649-95fc-9821292aebf9" style="width:31.25%" class="column"><figure id="4290acf3-52a4-487c-b7ad-5c9fab2f1de5" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%2013.png"><img style="width:331px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%2013.png"/></a></figure></div><div id="81a47730-f017-4dfb-9409-a549068b4fa9" style="width:68.75%" class="column"><p id="1b99ec92-e658-4ec9-8e3a-d720685bef92" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>c</mi><mi>c</mi><mo>≈</mo><mn>90.8</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">Acc \approx 90.8\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">cc</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">90.8%</span></span></span></span></span><span>﻿</span></span> (given by MATLAB)</p><p id="ed145d3f-0a44-4250-8f7a-493483df7317" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>P</mi><mo>=</mo><mn>706</mn><mspace width="1em"/><mi>F</mi><mi>N</mi><mo>=</mo><mn>52</mn><mspace width="1em"/><mi>F</mi><mi>P</mi><mo>=</mo><mn>88</mn><mspace width="1em"/><mi>T</mi><mi>N</mi><mo>=</mo><mn>670</mn></mrow><annotation encoding="application/x-tex">TP = 706\quad FN = 52\quad FP = 88\quad TN = 670</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">706</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">FN</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">52</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">FP</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">88</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">TN</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">670</span></span></span></span></span><span>﻿</span></span></p><p id="70c86ffd-f377-48a6-acb9-8bc04016629e" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac><mo>=</mo><mfrac><mn>706</mn><mrow><mn>706</mn><mo>+</mo><mn>88</mn></mrow></mfrac><mo>=</mo><mfrac><mn>353</mn><mn>397</mn></mfrac><mo>≈</mo><mn>0.889</mn><mspace width="1em"/><mo stretchy="false">(</mo><mn>88.9</mn><mi mathvariant="normal">%</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Precision = \frac{TP}{TP+FP} = \frac{706}{706+88}=\frac{353}{397} \approx 0.889 \quad (88.9\%)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">rec</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">FP</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2484em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">706</span><span class="mbin mtight">+</span><span class="mord mtight">88</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">706</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">397</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">353</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.889</span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">(</span><span class="mord">88.9%</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="90d4f60b-6ca5-4f6d-ac51-4f75a74a0769" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac><mo>=</mo><mfrac><mn>706</mn><mrow><mn>706</mn><mo>+</mo><mn>52</mn></mrow></mfrac><mo>=</mo><mfrac><mn>353</mn><mn>379</mn></mfrac><mo>≈</mo><mn>0.931</mn><mspace width="1em"/><mo stretchy="false">(</mo><mn>93.1</mn><mi mathvariant="normal">%</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Sensitivity = \frac{TP}{TP+FN}= \frac{706}{706+52} = \frac{353}{379}\approx 0.931 \quad (93.1\%)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.10903em;">FN</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2484em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">706</span><span class="mbin mtight">+</span><span class="mord mtight">52</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">706</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">379</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">353</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.931</span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">(</span><span class="mord">93.1%</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="85351352-1f4b-4cf9-a77e-8a8bea7edb09" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>p</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>f</mi><mi>i</mi><mi>c</mi><mi>i</mi><mi>t</mi><mi>y</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>N</mi></mrow><mrow><mi>T</mi><mi>N</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac><mo>=</mo><mfrac><mn>670</mn><mrow><mn>670</mn><mo>+</mo><mn>88</mn></mrow></mfrac><mo>=</mo><mfrac><mn>335</mn><mn>379</mn></mfrac><mo>≈</mo><mn>0.884</mn><mspace width="1em"/><mo stretchy="false">(</mo><mn>88.4</mn><mi mathvariant="normal">%</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Specificity = \frac{TN}{TN+FP}= \frac{670}{670+88}=\frac{335}{379} \approx 0.884 \quad(88.4\%)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Sp</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">i</span><span class="mord mathnormal">c</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">TN</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">FP</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">TN</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2484em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">670</span><span class="mbin mtight">+</span><span class="mord mtight">88</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">670</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">379</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">335</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.884</span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">(</span><span class="mord">88.4%</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="a851511a-1e68-4e09-b1c3-9044b3a4ba5a" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>−</mo><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo>=</mo><mn>2</mn><mo>∗</mo><mfrac><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>∗</mo><mi>S</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi></mrow><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>+</mo><mi>S</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mo>∗</mo><mfrac><mrow><mfrac><mn>353</mn><mn>379</mn></mfrac><mo>∗</mo><mfrac><mn>353</mn><mn>397</mn></mfrac></mrow><mrow><mfrac><mn>353</mn><mn>379</mn></mfrac><mo>+</mo><mfrac><mn>353</mn><mn>397</mn></mfrac></mrow></mfrac><mo>=</mo><mfrac><mn>353</mn><mn>388</mn></mfrac><mo>≈</mo><mn>0.910</mn><mspace width="1em"/><mo stretchy="false">(</mo><mn>91.0</mn><mi mathvariant="normal">%</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F-score = 2* \frac{Precision*Sensitivity}{Precision+Sensitivity} = 2* \frac{\frac{353}{379}*\frac{353}{397}}{\frac{353}{379}+\frac{353}{397}} = \frac{353}{388} \approx 0.910 \quad (91.0\%)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">score</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.4055em;vertical-align:-0.4811em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9244em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight">rec</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight">rec</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span><span class="mbin mtight">∗</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4811em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.7836em;vertical-align:-0.6418em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1418em;"><span style="top:-2.599em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">379</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">353</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">397</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">353</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.5508em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">379</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">353</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">∗</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">397</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">353</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6418em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">388</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">353</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.910</span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">(</span><span class="mord">91.0%</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="5a256641-8972-4c80-8f2c-b97840ee55fd" class="">
+</p></div></div><h3 id="55d281c9-10cb-411c-af93-e49086f445fd" class="">4.3 Based on the model with the highest accuracy (in the training/validation dataset), use the confusion matrix for the test dataset to calculate the metrics Accuracy, Precision, Sensitivity, Specificity and F-score .</h3><div id="b295d4c7-d581-4623-a0ff-4cd7cea02e2f" class="column-list"><div id="d93f623c-323a-4de9-91ad-392e0c363c80" style="width:31.25%" class="column"><figure id="4963cd01-dfc6-407b-874e-9a3ad9d8eb1c" class="image"><a href="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%2014.png"><img style="width:1108px" src="Technical%20Assignment%20Part%202%205cb354b4ca834175ad300307107fef45/Untitled%2014.png"/></a></figure></div><div id="6597c489-79b4-4642-b716-5bc28b1b7fd4" style="width:68.75%" class="column"><p id="d5741f6e-f71d-409a-b890-1f36145c2f62" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>c</mi><mi>c</mi><mo>≈</mo><mn>69.2</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">Acc \approx 69.2\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">cc</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">69.2%</span></span></span></span></span><span>﻿</span></span> (given by MATLAB)</p><p id="b924babc-d1fa-4bfd-b13c-eecdbcc0ffd8" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>P</mi><mo>=</mo><mn>682</mn><mspace width="1em"/><mi>F</mi><mi>N</mi><mo>=</mo><mn>76</mn><mspace width="1em"/><mi>F</mi><mi>P</mi><mo>=</mo><mn>391</mn><mspace width="1em"/><mi>T</mi><mi>N</mi><mo>=</mo><mn>367</mn></mrow><annotation encoding="application/x-tex">TP = 682\quad FN = 76\quad FP = 391\quad TN = 367</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">682</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">FN</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">76</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">FP</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">391</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">TN</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">367</span></span></span></span></span><span>﻿</span></span></p><p id="2a634b08-1924-4fff-bac4-2f2116e14923" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac><mo>=</mo><mfrac><mn>682</mn><mrow><mn>682</mn><mo>+</mo><mn>391</mn></mrow></mfrac><mo>=</mo><mfrac><mn>682</mn><mn>1073</mn></mfrac><mo>≈</mo><mn>0.636</mn><mspace width="1em"/><mo stretchy="false">(</mo><mn>63.6</mn><mi mathvariant="normal">%</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Precision = \frac{TP}{TP+FP} = \frac{682}{682+391}=\frac{682}{1073} \approx 0.636 \quad (63.6\%)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">rec</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">FP</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2484em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">682</span><span class="mbin mtight">+</span><span class="mord mtight">391</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">682</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1073</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">682</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.636</span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">(</span><span class="mord">63.6%</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="65bace40-d9b2-48fe-85b0-68ec1a72d3dc" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac><mo>=</mo><mfrac><mn>682</mn><mrow><mn>682</mn><mo>+</mo><mn>76</mn></mrow></mfrac><mo>=</mo><mfrac><mn>341</mn><mn>379</mn></mfrac><mo>≈</mo><mn>0.900</mn><mspace width="1em"/><mo stretchy="false">(</mo><mn>90.0</mn><mi mathvariant="normal">%</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Sensitivity = \frac{TP}{TP+FN}= \frac{682}{682+76} = \frac{341}{379}\approx 0.900 \quad (90.0\%)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.10903em;">FN</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2484em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">682</span><span class="mbin mtight">+</span><span class="mord mtight">76</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">682</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">379</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">341</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.900</span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">(</span><span class="mord">90.0%</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="17001427-cbb2-4ada-9698-305226c83c35" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>p</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>f</mi><mi>i</mi><mi>c</mi><mi>i</mi><mi>t</mi><mi>y</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>N</mi></mrow><mrow><mi>T</mi><mi>N</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac><mo>=</mo><mfrac><mn>367</mn><mrow><mn>367</mn><mo>+</mo><mn>391</mn></mrow></mfrac><mo>=</mo><mfrac><mn>367</mn><mn>758</mn></mfrac><mo>≈</mo><mn>0.484</mn><mspace width="1em"/><mo stretchy="false">(</mo><mn>48.4</mn><mi mathvariant="normal">%</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Specificity = \frac{TN}{TN+FP}= \frac{367}{367+391}=\frac{367}{758} \approx 0.484 \quad(48.4\%)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Sp</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">i</span><span class="mord mathnormal">c</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">TN</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">FP</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">TN</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2484em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">367</span><span class="mbin mtight">+</span><span class="mord mtight">391</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">367</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">758</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">367</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.484</span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">(</span><span class="mord">48.4%</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="98dd0553-c2ad-4f1e-ae72-64be2ef3d0b8" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>−</mo><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo>=</mo><mn>2</mn><mo>∗</mo><mfrac><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>∗</mo><mi>S</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi></mrow><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>i</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>+</mo><mi>S</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mo>∗</mo><mfrac><mrow><mfrac><mn>682</mn><mn>1073</mn></mfrac><mo>∗</mo><mfrac><mn>341</mn><mn>379</mn></mfrac></mrow><mrow><mfrac><mn>682</mn><mn>1073</mn></mfrac><mo>+</mo><mfrac><mn>341</mn><mn>379</mn></mfrac></mrow></mfrac><mo>=</mo><mfrac><mn>1364</mn><mn>1831</mn></mfrac><mo>≈</mo><mn>0.745</mn><mspace width="1em"/><mo stretchy="false">(</mo><mn>74.5</mn><mi mathvariant="normal">%</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F-score = 2* \frac{Precision*Sensitivity}{Precision+Sensitivity} = 2* \frac{\frac{682}{1073}*\frac{341}{379}}{\frac{682}{1073}+\frac{341}{379}} = \frac{1364}{1831} \approx 0.745 \quad(74.5\%)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">score</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.4055em;vertical-align:-0.4811em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9244em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight">rec</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight">rec</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span><span class="mbin mtight">∗</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4811em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.7836em;vertical-align:-0.6418em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1418em;"><span style="top:-2.599em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1073</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">682</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">379</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">341</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.5508em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1073</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">682</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">∗</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">379</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">341</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6418em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1831</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1364</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.745</span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">(</span><span class="mord">74.5%</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p><p id="eb0ba46c-94de-4b37-b54e-c1084151062b" class="">
+</p></div></div><h3 id="832177e7-8946-4bb4-bb38-fae7ad359067" class="">4.4 In general, was the classification performance better for the training or test dataset? Briefly explain why, and suggest how the classification accuracy for the test dataset could be improved.</h3><p id="f0df2bb0-ac44-475a-88e2-2d0cb4a768ca" class="">The classification performance is better for the training data, as it achieves an Acc of 90.8% comparing to the 69.2% of testing data. This phenomenon often arises due to <strong>overfitting</strong>, where the model captures spurious patterns that won&#x27;t recur in the future (noises and outliners), leading to less accurate predictions.<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mrow><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">^{[1]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.888em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord mtight">1</span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>  To improve classification accuracy for the test dataset, we can do some noise reduction or outlier removal.</p><p id="43c22a40-de68-4ab2-9441-d8db1ebaf7f5" class="">For example, we can reduce outliners using techniques like the <strong>interquartile range</strong> (IQR).  Given a quantile function <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>F</mi><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">F^{-1}_X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1478em;vertical-align:-0.2935em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8542em;"><span style="top:-2.4065em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.1031em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2935em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> for a random variable <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span></span><span>﻿</span></span>, the <strong>lower quartile</strong> is defined as <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mn>0.25</mn></msub><mo>=</mo><msubsup><mi>F</mi><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="false">(</mo><mn>0.25</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_{0.25} = F^{−1}_X (0.25)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.25</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1478em;vertical-align:-0.2935em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8542em;"><span style="top:-2.4065em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.1031em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2935em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0.25</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> while the <strong>upper quartile</strong> is defined as <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mn>0.75</mn></msub><mo>=</mo><msubsup><mi>F</mi><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="false">(</mo><mn>0.75</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_{0.75} =F^{−1}_X (0.75)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.75</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1478em;vertical-align:-0.2935em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8542em;"><span style="top:-2.4065em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.1031em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2935em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0.75</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>, and the <strong>interquartile range</strong> is defined as <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>Q</mi><mi>R</mi><mo>=</mo><msubsup><mi>F</mi><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="false">(</mo><mn>0.75</mn><mo stretchy="false">)</mo><mo>−</mo><msubsup><mi>F</mi><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="false">(</mo><mn>0.25</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">IQR = F^{−1}_X (0.75) - F^{−1}_X (0.25)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.00773em;">QR</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1478em;vertical-align:-0.2935em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8542em;"><span style="top:-2.4065em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.1031em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2935em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0.75</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1478em;vertical-align:-0.2935em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8542em;"><span style="top:-2.4065em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.1031em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2935em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0.25</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>. <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mrow><mo stretchy="false">[</mo><mn>2</mn><mo stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">^{[2]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.888em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord mtight">2</span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span></p><p id="3eaf460a-e324-4e1c-9b8a-9d455745394e" class="">Here’s the example code to impose IQR on <code>Healthy</code> and <code>Cancer</code> datasets to remove outliers.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4b83ad66-a39f-40cf-bae4-33d2da34f694" class="code"><code class="language-MATLAB">% IQR for Cancer and Healthy 
+Cancer_IQR = iqr(Cancer&#x27;);
+Healthy_IQR = iqr(Healthy&#x27;);
+
+% lower and upper quartiles for Cancer and Healthy datasets
+Ql_Cancer = quantile(Cancer&#x27;, 0.25);
+Qu_Cancer = quantile(Cancer&#x27;, 0.75);
+Ql_Healthy = quantile(Healthy&#x27;, 0.25);
+Qu_Healthy = quantile(Healthy&#x27;, 0.75);
+
+% define outlier thresholds
+lower_bound_Cancer = Ql_Cancer - 1.5 * Cancer_IQR;
+upper_bound_Cancer = Qu_Cancer + 1.5 * Cancer_IQR;
+lower_bound_Healthy = Ql_Healthy - 1.5 * Healthy_IQR;
+upper_bound_Healthy = Qu_Healthy + 1.5 * Healthy_IQR;
+
+% Filter out outliers
+Cancer_filtered = Cancer(:, all(Cancer &gt; lower_bound_Cancer &amp; Cancer &lt; upper_bound_Cancer));
+Healthy_filtered = Healthy(:, all(Healthy &gt; lower_bound_Healthy &amp; Healthy &lt; upper_bound_Healthy));
+
+% Transpose the data when need (similar to 1.1 when we are calculating average graphs &amp; STD)</code></pre><p id="8c6bb5be-41a8-4a58-85b2-8bf43ee8f523" class="">There are also many methods for data cleaning provided by MathsWorks using MATLAB Apps and programming. Ones can check the details here [3]  .</p><p id="5ceff68d-dd75-4410-8d4d-b6c9deb0528b" class="">
+</p><p id="8cfa972b-1b34-4778-9036-407c71c6227d" class="">
+</p><h1 id="dcde1e87-d3bb-4864-9efa-1ca1dc94f18c" class="">References:</h1><p id="439f498c-625a-4771-8d15-15eb735db9f5" class="">[1]:  <a href="https://www.kaggle.com/code/dansbecker/underfitting-and-overfitting">https://www.kaggle.com/code/dansbecker/underfitting-and-overfitting</a></p><p id="a4743756-62f1-4721-9dad-6c1201f17ced" class="">[2]:  MATH40005 Probability and Statistics Notes (Dean Bodenham), Spring 2023 Version 0.0.4, 1.6.6 Interquartile range (P37-38)</p><p id="79db0123-49ff-412b-806c-b5f22e1ce06a" class="">[3]: <a href="https://uk.mathworks.com/discovery/data-cleaning.html">What Is Data Cleaning? - MATLAB &amp; Simulink (mathworks.com)</a></p><p id="506b4413-710f-4d87-a544-6f672a459ecd" class="">
+</p><p id="6a3461c7-826c-4b9e-a62f-52192f4addd1" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
